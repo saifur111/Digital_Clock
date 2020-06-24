@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Digital Clock</title>
+	<style>
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+
+		body {
+			width: 100%;
+			background: #757588;
+		}
+
+		#container {
+			width: 980px;
+			height: 355px;
+			display: block;
+			margin: 0 auto;
+			background-color: darkslategray;
+		}
+
+		h1 {
+			color: aliceblue;
+			text-align: center;
+			text-shadow: 3px 3px 2.4px #e626cf;
+			font-size: 45px;
+			font-style: oblique;
+			font-family: monospace;
+		}
+
+		.clock {
+			color: #f4f0f0;
+			background-color: black;
+			display: grid;
+			float: left;
+			margin: 27px;
+			margin-bottom: auto;
+			padding: 20px;
+			width: 150px;
+			height: 130px;
+			text-align: center;
+			font-size: 90px
+		}
+
+		.footer {
+			color: #f4f0f0;
+			background-color: black;
+			display: grid;
+			float: left;
+			margin-left: 27px;
+			margin-right: 27px;
+			margin-bottom: 0px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 10px;
+			padding-bottom: 16px;
+			width: 150px;
+			height: 20px;
+			font-size: 30px;
+			text-align: center;
+		}
+
+		footer {
+			width: 980px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		#footer {
+			text-align: center;
+			color: floralwhite;
+			padding: 10px;
+			background-color: #0a080abd;
+		}
+
+	</style>
+</head>
+
+<body onload="startTime()">
+	<div id="container">
+		<h1>Digital Clock</h1>
+		<div class="clock_wraper">
+			<div class="clock" id="Hour">
+				<p class="valueH"></p>
+			</div>
+			<div class="clock" id="Minute">
+				<p class="valueM"></p>
+			</div>
+			<div class="clock" id="Second">
+				<p class="valueS"></p>
+			</div>
+			<div class="clock AM_PM" id="Day">
+				<p class="value"></p>
+			</div>
+		</div>
+		<div class="clock_wraper">
+			<div class="footer">
+				<p class="value">HOUR</p>
+			</div>
+			<div class="footer">
+				<p class="value">MINUTE</p>
+			</div>
+			<div class="footer">
+				<p class="value">SECOND</p>
+			</div>
+			<div class="footer" id="year">
+				<p class="value"></p>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div id="footer">
+			<p>&copy;2020 Copyright:Develop by Md Saifur Rahman.</p>
+		</div>
+	</footer>
+	<script>
+		function startTime() {
+			var t = new Date();
+			var h = t.getHours();
+			var m = t.getMinutes();
+			var s = t.getSeconds();
+			m = checkTime(m);
+			s = checkTime(s);
+			document.getElementById("Hour").innerHTML = h;
+			document.getElementById("Minute").innerHTML = m;
+			document.getElementById("Second").innerHTML = s;
+
+			var t = setTimeout(startTime, 500);
+		}
+
+		function checkTime(i) {
+			if (i < 10) {
+				i = "0" + i
+			};
+			return i;
+		}
+		var d = new Date();
+		document.getElementById("Day").innerHTML = d.getDate();
+		document.getElementById("year").innerHTML = d.getFullYear();
+
+	</script>
+</body>
+
+</html>
