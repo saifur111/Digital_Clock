@@ -13,6 +13,7 @@
 		body {
 			width: 100%;
 			background: #757588;
+			margin-top: 50px;
 		}
 
 		#container {
@@ -59,9 +60,12 @@
 			padding-top: 10px;
 			padding-bottom: 16px;
 			width: 150px;
-			height: 20px;
+			height: 60px;
 			font-size: 30px;
 			text-align: center;
+		}
+		.mn{
+			color: white;
 		}
 
 		footer {
@@ -96,6 +100,7 @@
 			<div class="clock AM_PM" id="Day">
 				<p class="value"></p>
 			</div>
+			
 		</div>
 		<div class="clock_wraper">
 			<div class="footer">
@@ -104,17 +109,18 @@
 			<div class="footer">
 				<p class="value">MINUTE</p>
 			</div>
-			<div class="footer">
+			<div class="footer"> 
 				<p class="value">SECOND</p>
 			</div>
-			<div class="footer" id="year">
-				<p class="value"></p>
+			<div class="footer"  >
+				<p id="month" class="value"></p>
 			</div>
 		</div>
 	</div>
 	<footer>
 		<div id="footer">
-			<p>&copy;2020 Copyright:Develop by Md Saifur Rahman.</p>
+			<p>&copy;2020 Copyright : Develop by Md Saifur Rahman.</p>
+			<p id="week"></p>
 		</div>
 	</footer>
 	<script>
@@ -138,9 +144,13 @@
 			};
 			return i;
 		}
+		const mon = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+		const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 		var d = new Date();
+		console.log(mon[d.getMonth()]);
 		document.getElementById("Day").innerHTML = d.getDate();
-		document.getElementById("year").innerHTML = d.getFullYear();
+		document.getElementById("month").innerHTML = mon[d.getMonth()] + ' ' +  d.getFullYear();
+		document.getElementById("week").innerHTML = weekday[d.getUTCDay()];
 
 	</script>
 </body>
